@@ -7,17 +7,121 @@
 	<version>0.3.0</version>
 	<packaging>pom</packaging>
 	<modules>
+
 		<module>../org.geppetto.model</module>
 		<module>../org.geppetto.core</module>
-		<module>../org.geppetto.model.neuroml</module>
-		<module>../org.geppetto.model.swc</module>
+		<!-- <module>../org.geppetto.model.neuroml</module> -->
+		<!-- <module>../org.geppetto.model.swc</module> -->
 		<module>../org.geppetto.simulation</module>
 		<module>../org.geppetto.frontend</module>
-		
-		<!-- <module>../org.geppetto.datasources</module> -->
-		<!-- <module>../org.geppetto.simulator.external</module> -->
-		<!-- <module>../org.geppetto.persistence</module> -->
-		<!-- <module>../org.geppetto.testbackend</module> -->
-		
+
+<!-- 		<module>../org.geppetto.model.nwb</module>
+		<module>../org.geppetto.datasources</module>
+		<module>../org.geppetto.simulator.external</module>
+		<module>../org.geppetto.persistence</module>
+		<module>../org.geppetto.testbackend</module> -->
+
 	</modules>
+	<repositories>
+		<repository>
+			<id>com.springsource.repository.bundles.release</id>
+			<name>SpringSource Enterprise Bundle Repository - SpringSource Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/release</url>
+		</repository>
+		<repository>
+			<id>com.springsource.repository.bundles.external</id>
+			<name>SpringSource Enterprise Bundle Repository - External Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/external</url>
+		</repository>
+		<repository>
+			<id>com.springsource.repository.libraries.release</id>
+			<name>SpringSource Enterprise Bundle Repository - SpringSource Library Releases</name>
+			<url>http://repository.springsource.com/maven/libraries/release</url>
+		</repository>
+		<repository>
+			<id>com.springsource.repository.libraries.external</id>
+			<name>SpringSource Enterprise Bundle Repository - External Library Releases</name>
+			<url>http://repository.springsource.com/maven/libraries/external</url>
+		</repository>
+		<repository>
+			<id>org.geppetto-mvn-repo</id>
+			<url>https://raw.github.com/openworm/org.geppetto.maven/mvn-repo</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>copy-dependencies</id>
+							<phase>generate-resources</phase>
+							<goals>
+								<goal>copy-dependencies</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>${project.build.outputDirectory}/lib</outputDirectory>
+								<includeScope>runtime</includeScope>
+								<excludeScope>provided</excludeScope>
+							</configuration>
+						</execution>
+						<execution>
+							<id>install</id>
+							<phase>install</phase>
+							<goals>
+								<goal>sources</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[2.0,)</versionRange>
+										<goals>
+											<goal>copy-dependencies</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<scm>
+		<connection>scm:git:git@github.com:openworm/org.geppetto.maven.git</connection>
+		<developerConnection>scm:git:git@github.com:openworm/org.geppetto.maven.git</developerConnection>
+		<url>git@github.com:openworm/org.geppetto.maven.git</url>
+	</scm>
 </project>
