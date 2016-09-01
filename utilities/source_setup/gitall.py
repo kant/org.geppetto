@@ -19,7 +19,7 @@ from subprocess import call
 config = json.loads(open(os.path.join(os.path.dirname(__file__), 'config.json')).read())
 
 def incorrectInput(argv, msg):
-	print msg
+	print(msg)
 	sys.exit()
 
 def main(argv):
@@ -42,13 +42,13 @@ def main(argv):
 
 	elif(argv[0] == 'reset'):
         	command = ['git','reset','--hard','HEAD']
-
+	
 	elif(argv[0] == 'status'):
-		command = ['git',argv[0]]
+		command = ['git',argv[0]]		
 
 	elif(argv[0] == 'remote'):
 		for repo in config['repos']:
-			print repo['name']+'  '+subprocess.check_output(['git','remote','add','mlolson','https://github.com/mlolson/'+repo['name']+'.git'], cwd = os.path.join(config['sourcesdir'], repo['name']))
+			print(repo['name']+'  '+subprocess.check_output(['git','remote','add','mlolson','https://github.com/mlolson/'+repo['name']+'.git'], cwd = os.path.join(config['sourcesdir'], repo['name'])).decode('utf-8'))
 		return
 
 	elif(argv[0] == 'checkout'):
@@ -75,9 +75,9 @@ def main(argv):
 
 	for repo in config['repos']:
 		try:
-			print repo['name']+'  '+subprocess.check_output(command, cwd = os.path.join(config['sourcesdir'], repo['name']))
+			print(repo['name']+'  '+subprocess.check_output(command, cwd = os.path.join(config['sourcesdir'], repo['name'])))
 		except subprocess.CalledProcessError:
-			print "error -- trying next repo"
+			print("error -- trying next repo")
 
 
 if __name__ == "__main__":
