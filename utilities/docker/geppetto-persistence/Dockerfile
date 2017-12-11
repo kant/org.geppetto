@@ -75,7 +75,7 @@ RUN cd workspace && git clone https://github.com/openworm/org.geppetto.core.git 
 RUN cd workspace && git clone https://github.com/openworm/org.geppetto.model.neuroml.git && cd org.geppetto.model.neuroml && git checkout development && mvn --quiet install;
 RUN cd workspace && git clone https://github.com/openworm/org.geppetto.simulation.git && cd org.geppetto.simulation && git checkout development && mvn --quiet install;
 RUN cd workspace && git clone https://github.com/openworm/org.geppetto.frontend.git && cd org.geppetto.frontend && git checkout $frontendBranch && mvn --quiet install;
-RUN cd workspace && git clone https://github.com/openworm/org.geppetto.persistence.git && cd org.geppetto.persistence && git checkout $persistenceBranch && mvn --quiet install;
+RUN cd workspace && git clone https://github.com/openworm/org.geppetto.persistence.git && cd org.geppetto.persistence && git checkout $persistenceBranch && mvn install;
 
 #END GET GEPPETTO SOURCES
 
