@@ -9,14 +9,14 @@ ARG persistenceBranch
 ENV persistenceBranch=${persistenceBranch}
 ARG frontendBranch
 ENV frontendBranch=${frontendBranch}
-RUN echo "$frontendBranch";
-RUN echo "$persistenceBranch";
 
 RUN echo $frontendBranch;
 RUN echo $persistenceBranch;
+RUN echo $aKey;
+RUN echo $sKey;
 
-RUN if $frontendBranch -q ""; then echo succeed; fi
-RUN if $persistenceBranch -q ""; then echo succeed; fi
+RUN if "$frontendBranch" -q ""; then echo "succeed"; fi
+RUN if "$persistenceBranch" -q ""; then echo "succeed"; fi
 
 RUN apt-get update && apt-get install -qq -y sudo
 
