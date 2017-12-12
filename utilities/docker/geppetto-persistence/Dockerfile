@@ -15,8 +15,8 @@ RUN echo $persistenceBranch;
 RUN echo $aKey;
 RUN echo $sKey;
 
-RUN if "$frontendBranch" -q ""; then echo "succeed"; fi
-RUN if "$persistenceBranch" -q ""; then echo "succeed"; fi
+RUN [ "${frontendBranch}" = "" ]; then export frontendBranch=development; fi
+RUN [ "${persistenceBranch}" = "" ]; then export persistenceBranch=development; fi
 
 RUN apt-get update && apt-get install -qq -y sudo
 
