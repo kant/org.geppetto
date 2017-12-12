@@ -67,7 +67,6 @@ RUN chmod -R 777 workspace
 USER developer
 
 COPY config.json workspace/org.geppetto/utilities/source_setup/
-COPY geppetto.plan workspace/org.geppetto/
 
 RUN sudo chmod -R 777 workspace;
 RUN cd workspace && git clone https://github.com/openworm/org.geppetto.model.git && cd org.geppetto.model && git checkout development && mvn --quiet install;
