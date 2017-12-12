@@ -6,7 +6,7 @@ ENV aKey=${aKey}
 ARG sKey
 ENV sKey=${sKey}
 ARG persistenceBranch
-ENV persistenceBranch=${persistenceBranch:}
+ENV persistenceBranch=${persistenceBranch}
 ARG frontendBranch
 ENV frontendBranch=${frontendBranch:}
 
