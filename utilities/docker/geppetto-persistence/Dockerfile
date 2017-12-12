@@ -12,11 +12,12 @@ ENV frontendBranch=${frontendBranch}
 
 RUN echo $frontendBranch;
 RUN echo $persistenceBranch;
-RUN echo $aKey;
-RUN echo $sKey;
 
 RUN [ "${frontendBranch}" = "" ]; then export frontendBranch=development; fi
 RUN [ "${persistenceBranch}" = "" ]; then export persistenceBranch=development; fi
+
+RUN echo $frontendBranch;
+RUN echo $persistenceBranch;
 
 RUN apt-get update && apt-get install -qq -y sudo
 
