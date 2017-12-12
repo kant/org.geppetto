@@ -6,15 +6,9 @@ ENV aKey=${aKey}
 ARG sKey
 ENV sKey=${sKey}
 ARG persistenceBranch
-ENV persistenceBranch=${persistenceBranch}
+ENV persistenceBranch=${persistenceBranch:-development}
 ARG frontendBranch
-ENV frontendBranch=${frontendBranch}
-
-RUN echo $frontendBranch;
-RUN echo $persistenceBranch;
-
-RUN if [ -z "${frontendBranch}" ]; then ENV frontendBranch=development; fi
-RUN if [ -z "${persistenceBranch}" ]; then ENV persistenceBranch=development; fi
+ENV frontendBranch=${frontendBranch:-development}
 
 RUN echo $frontendBranch;
 RUN echo $persistenceBranch;
