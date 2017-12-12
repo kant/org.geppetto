@@ -13,8 +13,8 @@ ENV frontendBranch=${frontendBranch}
 RUN echo $frontendBranch;
 RUN echo $persistenceBranch;
 
-RUN if [[ -z "${frontendBranch}" ]]; then export frontendBranch=development; fi
-RUN if [[ -z "${persistenceBranch}" ]]; then export persistenceBranch=development; fi
+RUN if [ -z "${frontendBranch}" ]; then export frontendBranch=development; fi
+RUN if [ -z "${persistenceBranch}" ]; then export persistenceBranch=development; fi
 
 RUN echo $frontendBranch;
 RUN echo $persistenceBranch;
