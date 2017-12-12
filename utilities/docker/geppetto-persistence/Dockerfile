@@ -8,7 +8,7 @@ ENV sKey=${sKey}
 ARG persistenceBranch
 ENV persistenceBranch=${persistenceBranch}
 ARG frontendBranch
-ENV frontendBranch=${frontendBranch:}
+ENV frontendBranch=${frontendBranch}
 
 RUN echo $frontendBranch;
 RUN echo $persistenceBranch;
