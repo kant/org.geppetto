@@ -63,6 +63,9 @@ USER developer
 
 COPY config.json workspace/org.geppetto/utilities/source_setup/
 
+RUN echo $frontendBranch;
+RUN echo $persistenceBranch;
+
 RUN sudo chmod -R 777 workspace;
 RUN cd workspace && git clone https://github.com/openworm/org.geppetto.model.git && cd org.geppetto.model && git checkout development && mvn --quiet install;
 RUN cd workspace && git clone https://github.com/openworm/org.geppetto.core.git && cd org.geppetto.core && git checkout development && mvn --quiet install;
@@ -102,9 +105,9 @@ COPY init.sql geppetto/
 USER root
 RUN mysql_install_db --user=mysql >/dev/null 2>&1
 RUN sed 's/password = .*/password = /g' -i /etc/mysql/debian.cnf
-RUN sudo service mysql start && mysql -uroot < /home/developer/geppetto/init.sql
 RUN cd /home/developer/geppetto
 RUN ls
+RUN sudo service mysql start && mysql -uroot < /home/developer/geppetto/init.sql
 #END SETUP MYSQL INITIAL DATA
 
 USER developer
