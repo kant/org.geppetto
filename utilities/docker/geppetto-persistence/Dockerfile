@@ -14,6 +14,7 @@ RUN echo $frontendBranch;
 RUN echo $persistenceBranch;
 
 RUN apt-get update && apt-get install -qq -y sudo
+RUN sudo apt-get install mlocate
 
 # Install maven
 RUN apt-get update
@@ -104,6 +105,8 @@ COPY init.sql geppetto/
 RUN ls -ls
 RUN cd geppetto/
 RUN ls -ls
+RUN ls -F
+RUN ls -R
 
 RUN sudo locate "*.sql"
 
