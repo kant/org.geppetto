@@ -101,9 +101,11 @@ COPY init.sql geppetto/
 #RUN sudo chmod +x geppetto/entrypoint.sh
 #END SETUP MYSQL CONFIG
 
-RUN ls
+RUN ls -ls
 RUN cd geppetto/
-RUN ls
+RUN ls -ls
+
+RUN sudo locate "*.sql"
 
 #SETUP MYSQL INITIAL DATA
 USER root
