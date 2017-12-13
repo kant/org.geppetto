@@ -63,6 +63,7 @@ RUN chmod -R 777 workspace
 USER developer
 
 COPY config.json workspace/org.geppetto/utilities/source_setup/
+COPY geppetto.plan workspace/org.geppetto/
 
 RUN echo $frontendBranch;
 RUN echo $persistenceBranch;
@@ -103,12 +104,11 @@ COPY init.sql geppetto/
 #END SETUP MYSQL CONFIG
 
 RUN ls -ls
-RUN cd geppetto/
+RUN cd /home/developer/geppetto
 RUN ls -ls
-RUN cd geppetto/
-RUN ls -ls
-RUN ls -F
-RUN ls -R
+RUN pwd
+
+RUN sudo locate "*.sql"
 
 #SETUP MYSQL INITIAL DATA
 USER root
