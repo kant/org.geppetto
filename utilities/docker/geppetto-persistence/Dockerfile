@@ -114,7 +114,7 @@ RUN mysql_install_db --user=mysql >/dev/null 2>&1
 RUN sed 's/password = .*/password = /g' -i /etc/mysql/debian.cnf
 RUN cd /home/developer/geppetto/
 RUN ls
-RUN sudo /home/developer/geppetto/init.sql/mysql start
+RUN sudo service mysql start < /home/developer/geppetto/init.sql
 RUN service mysqld status
 #END SETUP MYSQL INITIAL DATA
 
