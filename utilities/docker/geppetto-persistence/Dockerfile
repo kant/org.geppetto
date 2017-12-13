@@ -108,8 +108,6 @@ RUN cd /home/developer/geppetto
 RUN ls -ls
 RUN pwd
 
-RUN sudo locate "*.sql"
-
 #SETUP MYSQL INITIAL DATA
 USER root
 RUN mysql_install_db --user=mysql >/dev/null 2>&1
