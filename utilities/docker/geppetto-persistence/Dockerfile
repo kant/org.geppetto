@@ -105,10 +105,10 @@ COPY init.sql geppetto/
 RUN ls -ls
 RUN cd geppetto/
 RUN ls -ls
+RUN cd geppetto/
+RUN ls -ls
 RUN ls -F
 RUN ls -R
-
-RUN sudo locate "*.sql"
 
 #SETUP MYSQL INITIAL DATA
 USER root
