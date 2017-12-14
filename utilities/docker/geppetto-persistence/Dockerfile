@@ -99,7 +99,7 @@ USER developer
 RUN mkdir -p geppetto/
 COPY db.properties geppetto/
 COPY init.sql geppetto/
-RUN chmod u+x /home/developer/geppetto/init.sql
+RUN sudo chmod u+x /home/developer/geppetto/init.sql
 #COPY entrypoint.sh geppetto/
 #RUN sudo chmod +x geppetto/entrypoint.sh
 #END SETUP MYSQL CONFIG
