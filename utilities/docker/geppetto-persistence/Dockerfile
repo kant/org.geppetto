@@ -99,6 +99,7 @@ USER developer
 RUN mkdir -p geppetto/
 COPY db.properties geppetto/
 COPY init.sql geppetto/
+RUN chmod u+x /home/developer/geppetto/init.sql
 #COPY entrypoint.sh geppetto/
 #RUN sudo chmod +x geppetto/entrypoint.sh
 #END SETUP MYSQL CONFIG
@@ -108,13 +109,15 @@ RUN cd /home/developer/geppetto
 RUN ls -ls
 RUN pwd
 
+RUN sudo locate "*.sql"
+
 #SETUP MYSQL INITIAL DATA
 USER root
 RUN mysql_install_db --user=mysql >/dev/null 2>&1
 RUN sed 's/password = .*/password = /g' -i /etc/mysql/debian.cnf
 RUN cd /home/developer/geppetto/
 RUN ls
-RUN sudo service mysql start < /home/developer/geppetto/init.sql
+RUN sudo service mysql start && mysql -uroot < /home/developer/geppetto/init.sql
 RUN service mysqld status
 #END SETUP MYSQL INITIAL DATA
 
