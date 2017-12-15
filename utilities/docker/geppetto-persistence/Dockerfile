@@ -108,8 +108,11 @@ RUN sudo service mysql stop
 RUN sudo ls -alh /var/log/mysql*
 RUN sudo tail /var/log/mysql.log -n 100
 RUN sudo tail /var/log/mysql.err -n 100
+RUN sudo df -H
 RUN sudo grep mysqld /var/log/mysql/error.log
-RUN sudo /etc/init.d/mysql start
+RUN sudo tail /var/log/mysql/error.log
+RUN sudo service mysql stop
+RUN sudo service mysql start
 RUN sudo ls -alh /var/log/mysql*
 RUN sudo tail /var/log/mysql.log -n 100
 RUN sudo tail /var/log/mysql.err -n 100
