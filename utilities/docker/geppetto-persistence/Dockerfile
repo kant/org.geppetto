@@ -80,7 +80,7 @@ RUN cd workspace && git clone https://github.com/openworm/org.geppetto.persisten
 
 #INSTALL MYSQL
 USER root
-ENV MYSQL_USER=mysql \
+ENV MYSQL_USER=sudo \
     MYSQL_DATA_DIR=/var/lib/mysql \
     MYSQL_RUN_DIR=/run/mysqld \
     MYSQL_LOG_DIR=/var/log/mysql
