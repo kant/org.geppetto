@@ -108,6 +108,12 @@ RUN sudo service mysql stop
 RUN sudo ls -alh /var/log/mysql*
 RUN sudo tail /var/log/mysql.log -n 100
 RUN sudo tail /var/log/mysql.err -n 100
+RUN sudo grep mysqld /var/log/mysql/error.log
+RUN sudo /etc/init.d/mysql start
+RUN sudo ls -alh /var/log/mysql*
+RUN sudo tail /var/log/mysql.log -n 100
+RUN sudo tail /var/log/mysql.err -n 100
+RUN sudo grep mysqld /var/log/mysql/error.log
 RUN sudo service mysql start && mysql -uroot < /home/developer/geppetto/init.sql
 RUN cd /var/log/mysql && ls
 RUN sudo grep mysqld /var/log/mysql.log
