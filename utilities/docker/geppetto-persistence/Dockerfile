@@ -111,20 +111,20 @@ RUN sudo tail /var/log/mysql.err -n 100
 RUN sudo df -H
 RUN sudo ps -aux | grep mysql
 RUN sudo grep mysqld /var/log/mysql/error.log
-RUN sudo tail /var/log/mysql/error.log
+RUN sudo tail /var/log/mysql/error.log -n 100
 RUN sudo service mysql stop
 RUN sudo ls -alh /var/log/mysql*
 RUN sudo tail /var/log/mysql.log -n 100
 RUN sudo tail /var/log/mysql.err -n 100
 RUN sudo ps -aux | grep mysql
 RUN sudo grep mysqld /var/log/mysql/error.log
-RUN sudo tail /var/log/mysql/error.log
+RUN sudo tail /var/log/mysql/error.log -n 100
 RUN sudo service mysql start && mysql -uroot < /home/developer/geppetto/init.sql
 RUN cd /var/log/mysql && ls
 RUN sudo grep mysqld /var/log/mysql.log
 RUN sudo ps -aux | grep mysql
 RUN sudo grep mysqld /var/log/mysql/error.log
-RUN sudo tail /var/log/mysql/error.log
+RUN sudo tail /var/log/mysql/error.log -n 100
 #END SETUP MYSQL INITIAL DATA
 
 USER developer
