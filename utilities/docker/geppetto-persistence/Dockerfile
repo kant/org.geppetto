@@ -107,10 +107,11 @@ RUN cd /var/log/mysql && ls
 RUN sudo grep mysqld /var/log/mysql/error.log
 RUN sudo service mysql stop
 RUN sudo ls -alh /var/log/mysql*
-RUN sudo grep mysqld /var/log/mysql/mysql.log
+RUN sudo grep mysqld /var/log/mysql.err
+RUN sudo grep mysqld /var/log/mysql.log
 RUN sudo service mysql start && mysql -uroot < /home/developer/geppetto/init.sql
 RUN cd /var/log/mysql && ls
-RUN sudo grep mysqld /var/log/mysql/error.log
+RUN sudo grep mysqld /var/log/mysql.log
 #END SETUP MYSQL INITIAL DATA
 
 USER developer
