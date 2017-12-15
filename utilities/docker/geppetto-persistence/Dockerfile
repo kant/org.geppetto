@@ -112,7 +112,7 @@ RUN sudo sed 's/password = .*/password = /g' -i /etc/mysql/debian.cnf
 RUN cd /var/log/mysql && ls
 RUN sudo grep mysqld /var/log/mysql/error.log
 RUN sudo service mysql stop
-RUN sudo grep mysqld /var/log/mysql/error.log
+RUN sudo grep mysqld /var/log/mysql/mysql.log
 RUN sudo ls -alh /var/log/mysql*
 RUN sudo service mysql start && mysql -uroot < /home/developer/geppetto/init.sql
 RUN cd /var/log/mysql && ls
