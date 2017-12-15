@@ -79,12 +79,12 @@ ENV MYSQL_USER=mysql \
     MYSQL_RUN_DIR=/run/mysqld \
     MYSQL_LOG_DIR=/var/log/mysql
 
-RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -qq -y mysql-server \
- && rm -rf ${MYSQL_DATA_DIR} \
- && rm -rf /var/lib/apt/lists/*
+RUN sudo apt-get update \
+ && sudo DEBIAN_FRONTEND=noninteractive apt-get install -qq -y mysql-server \
+ && sudo rm -rf ${MYSQL_DATA_DIR} \
+ && sudo rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p ${MYSQL_DATA_DIR} && mkdir -p ${MYSQL_RUN_DIR} && \
+RUN sudo mkdir -p ${MYSQL_DATA_DIR} && mkdir -p ${MYSQL_RUN_DIR} && \
   mkdir -p ${MYSQL_LOG_DIR}
 
 USER developer
