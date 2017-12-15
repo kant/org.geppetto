@@ -74,7 +74,7 @@ RUN sudo chmod -R 777 workspace;
 
 #INSTALL MYSQL
 USER root
-ENV MYSQL_USER=sudo \
+ENV MYSQL_USER=mysql \
     MYSQL_DATA_DIR=/var/lib/mysql \
     MYSQL_RUN_DIR=/run/mysqld \
     MYSQL_LOG_DIR=/var/log/mysql
@@ -113,14 +113,18 @@ RUN sudo ps -aux | grep mysql
 RUN sudo grep mysqld /var/log/mysql/error.log
 RUN sudo tail /var/log/mysql/error.log
 RUN sudo service mysql stop
-RUN sudo service mysql start
 RUN sudo ls -alh /var/log/mysql*
 RUN sudo tail /var/log/mysql.log -n 100
 RUN sudo tail /var/log/mysql.err -n 100
+RUN sudo ps -aux | grep mysql
 RUN sudo grep mysqld /var/log/mysql/error.log
+RUN sudo tail /var/log/mysql/error.log
 RUN sudo service mysql start && mysql -uroot < /home/developer/geppetto/init.sql
 RUN cd /var/log/mysql && ls
 RUN sudo grep mysqld /var/log/mysql.log
+RUN sudo ps -aux | grep mysql
+RUN sudo grep mysqld /var/log/mysql/error.log
+RUN sudo tail /var/log/mysql/error.log
 #END SETUP MYSQL INITIAL DATA
 
 USER developer
