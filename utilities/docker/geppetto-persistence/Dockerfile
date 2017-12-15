@@ -80,7 +80,7 @@ ENV MYSQL_USER=mysql \
     MYSQL_LOG_DIR=/var/log/mysql
 
 RUN sudo apt-get update \
- && sudo DEBIAN_FRONTEND=noninteractive apt-get install -qq -y mysql-server \
+ && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server \
  && sudo rm -rf ${MYSQL_DATA_DIR} \
  && sudo rm -rf /var/lib/apt/lists/*
 
