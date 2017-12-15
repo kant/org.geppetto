@@ -104,7 +104,8 @@ USER root
 RUN sudo mysql_install_db --user=mysql >/dev/null 2>&1
 RUN sudo sed 's/password = .*/password = /g' -i /etc/mysql/debian.cnf
 RUN cd /var/log/mysql && ls
-RUN sudo grep mysqld /var/log/mysql/error.log
+RUN sudo grep mysqld /var/log/mysql.err
+RUN sudo grep mysqld /var/log/mysql.log
 RUN sudo service mysql stop
 RUN sudo ls -alh /var/log/mysql*
 RUN sudo grep mysqld /var/log/mysql.err
