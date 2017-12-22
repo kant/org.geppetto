@@ -58,11 +58,11 @@ RUN mvn --version
 #GET GEPPETTO SOURCES
 USER root
 RUN mkdir -p workspace && cd workspace && git clone http://github.com/openworm/org.geppetto && cd org.geppetto && git checkout development
-COPY workspace/org.geppetto/utilities/docker/geppetto-persistence/geppetto.plan workspace/org.geppetto/
 RUN chmod -R 777 workspace
 USER developer
 
 COPY config.json workspace/org.geppetto/utilities/source_setup/
+COPY workspace/org.geppetto/utilities/docker/geppetto-persistence/geppetto.plan workspace/org.geppetto/
 
 RUN sudo chmod -R 777 workspace;
 RUN cd workspace && git clone https://github.com/openworm/org.geppetto.model.git && cd org.geppetto.model && git checkout development && mvn --quiet install;
