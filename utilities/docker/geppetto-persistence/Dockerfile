@@ -62,7 +62,6 @@ RUN chmod -R 777 workspace
 USER developer
 
 COPY config.json workspace/org.geppetto/utilities/source_setup/
-RUN cd /home/developer/workspace/org.geppetto/utilities/docker/geppetto-persistence/ && ls
 RUN sudo mv /home/developer/workspace/org.geppetto/utilities/docker/geppetto-persistence/geppetto.plan /home/developer
 
 COPY geppetto.plan workspace/org.geppetto/
